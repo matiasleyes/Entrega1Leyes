@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from .models import *
-from django.http import HttpResponse
+from django.http import HttpResponse 
 # Create your views here.
 
 def inicio(request):
-    return HttpResponse("vistsa inicio")
+
+    return render(request, "BlogLeyes/inicio.html")
 
 def writer(request):
     return HttpResponse("vistsa writer")
