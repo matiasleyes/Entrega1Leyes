@@ -9,7 +9,21 @@ def inicio(request):
     return render(request, "BlogLeyes/inicio.html")
 
 def writer(request):
-    return render(request, "BlogLeyes/writer.html")
+    if request.method == "POST":
+
+        myForm = WriterForm(request.POST)
+        print(myForm)
+        if myForm.is_valid:
+            information = myForm.cleaned_data
+            writer = Writer(nombre = information["nombre"], apellido = information["apellido"], edad = information["edad"], especialidad= information["especialidad"])
+            writer.save()
+            writers = Writer.objects.filter()
+            return render(request, "BlogLeyes/inicio.html")
+    else:
+
+        myForm = WriterForm()
+
+    return render(request, "BlogLeyes/writer.html", {"myForm": myForm})
 
 def themes(request):
     return render(request, "BlogLeyes/themes.html")

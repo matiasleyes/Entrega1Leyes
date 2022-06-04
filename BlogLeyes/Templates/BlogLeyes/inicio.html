@@ -2,13 +2,26 @@
 
 {% load static %}
 
-{% block contenidoQueCambia %}
+{% block cuadro %}
 
-
-    <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
-    <h1>Inicio</h1>
-    <p>aca se verà el inicio del blog</p>
-
-
+<div class="col-md-5 d-none d-md-block">
+    <form class="header-form">
+        <div class="head"> Si usted queire ser  <span class="text-primary">Escritor</span> deje aqui sus datos.</div>
+        <div class="body">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Name*">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email*">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password*">
+            </div>
+        </div>
+        <div class="footer">
+            <button class="btn btn-primary btn-block">Get Started</button>
+        </div>
+    </form> 
 
 {% endblock %}
+

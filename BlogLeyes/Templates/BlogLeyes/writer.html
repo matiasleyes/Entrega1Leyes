@@ -4,10 +4,29 @@
 
 {% block contenidoQueCambia %}
 
-
+    <h1> Registro de Escritores </h1>
+    
     <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
-    <h1>Writers</h1>
-    <p>aca se veràn los escritores del blog</p>
+    <h1>Si usted queire ser escritor, por favor complete el siguiente formulario</h1>
+
+    {% if myForm.errors%}
+
+        <p style="color: red"> Estan mal los datos</p>
+
+    {% endif %}
+
+
+    <form action="" method="POST"> {% csrf_token %}
+        
+        <table>
+    
+            {{myForm.as_table}}
+    
+        </table>
+    
+        <input type="submit" value="Enviar">
+
+    </form> 
 
 
 
