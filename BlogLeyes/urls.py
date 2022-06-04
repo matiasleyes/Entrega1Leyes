@@ -10,4 +10,5 @@ urlpatterns = [
     path('themes/', views.themes, name='Theme'),
     path('topics/', views.topics, name='Topics'),
     path('',views.inicio, name='Inicio'),
+    path('writerForm/', views.writerForm, name='WriterForm'),
 ]
