@@ -5,9 +5,29 @@
 {% block contenidoQueCambia %}
 
 
-    <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
-    <h1>Owners</h1>
-    <p>aca se veràn los dueños de la pagina</p>
+<h1> Registro de Dueños </h1>
+    
+<!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+<h1>Si usted queire invertir en el blog, por favor complete el siguiente formulario</h1>
+
+{% if myForm.errors%}
+
+    <p style="color: red"> Estan mal los datos</p>
+
+{% endif %}
+
+
+<form action="" method="POST"> {% csrf_token %}
+    
+    <table>
+
+        {{myForm.as_table}}
+
+    </table>
+
+    <input type="submit" value="Enviar">
+
+</form> 
 
 
 
