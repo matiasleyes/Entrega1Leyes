@@ -82,3 +82,16 @@ def donor(request):
 def articulo(request):
     return render(request, "BlogLeyes/articulo.html")
 
+def busquedaEscritor(request):
+    return render(request, 'BlogLeyes/busquedaEscritor.html')
+
+
+def buscar(request):
+    if request.GET['apellido']:
+        apellido = request.GET['apellido']
+        escritor = Writer.objects.filter(apellido=apellido)
+        return render(request, 'BlogLeyes/resultadosBusqueda.html', {'escritor': escritor, 'apellido':apellido})
+    else:
+        respuesta = "No se ingresó ningun escritor"
+        return HttpResponse(respuesta)
+

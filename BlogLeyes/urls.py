@@ -10,4 +10,6 @@ urlpatterns = [
     path('themes/', views.themes, name='Theme'),
     path('topics/', views.topics, name='Topics'),
     path('',views.inicio, name='Inicio'),
+    path('busquedaEscritor/', views.busquedaEscritor, name="BusquedaEscritor"),
+    path('buscar/', views.buscar, name='buscar'),
 ]

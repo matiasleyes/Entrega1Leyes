@@ -1,0 +1,16 @@
+{% extends "BlogLeyes/padre.html" %}
+{% load static %}
+
+{% block contenidoQueCambia %}
+<h1>Estamos buscando al escritor de apellido {{apellido}}</h1>
+{% if escritor %}
+<ul>
+    {% for escritor in escritor %}
+    <li>Encontramos al escritor {{escritor.nombre}} {{escritor.apellido}}, de {{escritor.edad}} años de edad, cuya especialidad es: {{escritor.especialidad}} </li>
+
+    <br>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}
