@@ -22,4 +22,4 @@ def donor(request):
     return HttpResponse("vistsa donor")
 
 def articulo(request):
-    return HttpResponse("vistsa articulo")
+    return HttpResponse("vistsa articulo")git 
