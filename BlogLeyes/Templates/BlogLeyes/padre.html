@@ -42,6 +42,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'BusquedaEscritor' %}">Buscar Escritor</a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'Login' %}">Sing Up</a>
+                    </li>
+
+
                 </ul>
             </div>
         </div>
@@ -51,10 +57,15 @@
             <div class="row h-100 align-items-center">
                 <div class="col-md-7">
                     <div class="header-content">
+                        {% block content %}
+
                         <h3 class="header-title"><strong class="text-primary">BLOG</strong><span>LEYES</span></h3>
                         <h4 class="header-subtitle">El Blog que nuclea a todos los escritores, de todos los temas </h4>
                         <p>Ya sea que busque temas de los mas variados, o tenga cosas para compartir con el mundo, esta en el lugar correcto!</p>
+                       
+                        {% endblock %}
                     </div>  
+
                 </div>
                 {% block cuadro %}
 

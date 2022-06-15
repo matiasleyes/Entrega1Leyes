@@ -2,11 +2,63 @@ from django.shortcuts import render
 from .models import *
 from django.http import HttpResponse 
 from .forms import WriterForm, ThemesForm, OwnerForm, DonorForm
-# Create your views here.
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
 
 def inicio(request):
 
     return render(request, "BlogLeyes/inicio.html")
+
+#LOGIN-----------------------------------------------------------------------------------------------------------------------------------
+def login_request(request):
+
+    if request.method =="POST":
+        form = AuthenticationForm(request, data = request.POST)
+
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+
+            user = authenticate(username = username, password = password)
+
+            if user is not None:
+                login(request, user)
+
+                return render(request, "BlogLeyes/inicio.html", {"mensaje":f"bienvenido {username}"})
+            else:
+                return render(request, "BlogLeyes/inicio.html", {"mensaje":"error, datos incorrectos"})
+
+        else:
+            return render(request, "BlogLeyes/errorLogin.html", {"mensaje":"error, formulario erroneo"})
+
+    form = AuthenticationForm()
+
+    return render(request, "BlogLeyes/login.html", {'form':form}) 
+
+
+def register(request):
+
+    if request.method == "POST":
+
+        form = UserCreationForm(request.POST)
+        
+        if form.is_valid:
+            
+            username = form.cleaned_data['username']
+            form.save()
+
+            return render(request, "BlogLeyes/inicio.html", {'mensaje':f'usuario {username} creado'})
+    
+        else:
+            return render(request, "BlogLeyes/inicio.html", {'mensaje':f'no se pudo crea el usuario {username}'})
+
+    else:
+        form = UserCreationForm()
+
+        return render(request, "BlogLeyes/register.html", {"form":form})
+
+
+
 
 def writer(request):
     if request.method == "POST":

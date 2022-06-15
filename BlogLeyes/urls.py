@@ -2,6 +2,11 @@ from django.urls import path
 from BlogLeyes import views
 
 urlpatterns = [
+    #Login-----------
+    path('login/',views.login_request, name="Login"),
+    path('register/', views.register, name='Register'),
+    
+    
     path('writer/', views.writer, name='Writer'),
     path('articulo', views.articulo, name='Articulo'),
     path('owner/', views.owner, name='Owner'),
