@@ -8,7 +8,7 @@ urlpatterns = [
     
     
     path('writer/', views.writer, name='Writer'),
-    path('articulo', views.articulo, name='Articulo'),
+    path('articulo', views.articulo, name='articulo'),
     path('owner/', views.owner, name='Owner'),
     path('inicio/',views.inicio, name='Inicio'),
     path('donor/', views.donor, name='Donor'),
