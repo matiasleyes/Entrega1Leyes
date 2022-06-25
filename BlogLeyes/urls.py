@@ -17,4 +17,6 @@ urlpatterns = [
     path('',views.inicio, name='Inicio'),
     path('busquedaEscritor/', views.busquedaEscritor, name="BusquedaEscritor"),
     path('buscar/', views.buscar, name='buscar'),
+    path('aboutus/', views.aboutus, name='Aboutus'),
+
 ]

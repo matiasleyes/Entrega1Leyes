@@ -1,6 +1,10 @@
 {% extends "BlogLeyes/padre.html" %}
 {% load static %}
-{% block contenidoQueCambia %}
+{% block content %}
+
+<h1>Ingrese el apellido del escritor buscado</h1>
+
+
 <form action="{% url 'buscar' %}" method="GET">
     <input type="text" placeholder="APELLIDO" name="apellido" id="apellido">
     <input type="submit" value="Buscar">

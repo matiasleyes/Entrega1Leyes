@@ -147,3 +147,5 @@ def buscar(request):
         respuesta = "No se ingresó ningun escritor"
         return HttpResponse(respuesta)
 
+def aboutus(request):
+    return render(request, 'BlogLeyes/Aboutus.html')
