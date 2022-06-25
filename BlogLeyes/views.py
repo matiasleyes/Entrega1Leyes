@@ -42,7 +42,7 @@ def register(request):
 
         form = UserCreationForm(request.POST)
         
-        if form.is_valid:
+        if form.is_valid():
             
             username = form.cleaned_data['username']
             form.save()
