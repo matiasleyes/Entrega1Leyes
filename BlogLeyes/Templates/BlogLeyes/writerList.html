@@ -1,0 +1,24 @@
+
+{% extends "BlogLeyes/padre.html" %}
+
+{% load static %}
+{% block content %}
+<h1>Escritores</h1>
+<ul>
+
+    {% for writer in object_list %}
+
+        <li>
+            <p>Nombre : {{writer.nombre}} {{writer.apellido}}</p>
+            <p>
+            <a href="{% url 'writerDetail' writer.id %}"> Ver</a>
+            <a href="{% url 'writerEdit' writer.id %}">Editar</a>
+            <a href="{% url 'writerDelete' writer.id %}">Eliminar</a>
+            </p>
+        </li>
+
+    {% endfor %}
+</ul>
+                            
+<a href="{% url 'writerNew' %}">Anadir un Escritor</a>
+{% endblock %}

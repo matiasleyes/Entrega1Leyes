@@ -1,8 +1,6 @@
 from django.db import models
 import uuid
 
-
-
 # Create your models here.
 class Writer(models.Model):
     id = models.CharField(default=uuid.uuid4(), primary_key=True, max_length=100)
@@ -11,7 +9,7 @@ class Writer(models.Model):
     edad = models.IntegerField()
     especialidad = models.CharField(max_length=50)
     def __str__(self):
-        return self.nombre, self.apellido, self.especialidad
+        return self.nombre, self.apellido, self.edad, self.especialidad
 
 class Themes(models.Model):
     id = models.CharField(default=uuid.uuid4(), primary_key=True, max_length=100)

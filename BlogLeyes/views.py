@@ -4,6 +4,9 @@ from django.http import HttpResponse
 from .forms import WriterForm, ThemesForm, OwnerForm, DonorForm
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 def inicio(request):
 
@@ -58,62 +61,103 @@ def register(request):
         return render(request, "BlogLeyes/register.html", {"form":form})
 
 
-
-
+#WRITER---------------------------------------------------------------------------------
 def writer(request):
-    if request.method == "POST":
+    return render(request,"BlogLeyes/writer.html")
 
-        myForm = WriterForm(request.POST)
-        print(myForm)
-        if myForm.is_valid:
-            information = myForm.cleaned_data
-            writer = Writer(nombre = information["nombre"], apellido = information["apellido"], edad = information["edad"], especialidad= information["especialidad"])
-            writer.save()
-            return render(request, "BlogLeyes/inicio.html")
-    else:
+class writerList(ListView):
 
-        myForm = WriterForm()
+    model = Writer
+    template_name = "BlogLeyes/writerList.html"
 
-    return render(request, "BlogLeyes/writer.html", {"myForm": myForm})
+class writerDetail(DetailView):
 
+    model = Writer
+    template_name = "BlogLeyes/writerDetail.html"
+
+class writerMake(CreateView):
+
+    model = Writer
+    success_url = "/writer/list"
+    fields = [ 'nombre', 'apellido', 'edad','especialidad' ]
+
+class writerUpdate(UpdateView):
+
+    model = Writer
+    success_url = "/writer/list"
+    fields = [ 'nombre', 'apellido', 'edad', 'especialidad' ]
+
+class writerDelete(DeleteView):
+
+    model = Writer
+    success_url = "/writer/list"
+
+#THEMES---------------------------------------------------------------------------------
 def themes(request):
-    temas = Themes.objects.all() 
-    if request.method == "POST":
+    return render(request,"BlogLeyes/themes.html")
 
-        myForm = ThemesForm(request.POST)
-        print(myForm)
-        if myForm.is_valid:
-            information = myForm.cleaned_data
-            theme = Themes(tema = information["tema"])
-            theme.save()
-            return render(request, "BlogLeyes/inicio.html")
-    else:
+class themesList(ListView):
 
-        myForm = ThemesForm()
+    model = Themes
+    template_name = "BlogLeyes/themesList.html"
 
-    return render(request, "BlogLeyes/themes.html", {"myForm": myForm})
+class themesDetail(DetailView):
+
+    model = Themes
+    template_name = "BlogLeyes/themesDetail.html"
+
+class themesMake(CreateView):
+
+    model = Themes
+    success_url = "/themes/list"
+    fields = [ 'tema' ]
+
+class themesUpdate(UpdateView):
+
+    model = Themes
+    success_url = "/themes/list"
+    fields = [ 'tema' ]
+
+class themesDelete(DeleteView):
+
+    model = Themes
+    success_url = "/themes/list"
 
 
-
+#TOPICS---------------------------------------------------------------------------------
 def topics(request):
-    return render(request, "BlogLeyes/topics.html")
+    return render(request,"BlogLeyes/topics.html")
 
+#OWNER ---------------------------------------------------------------------------------
 def owner(request):
-    if request.method == "POST":
+    return render(request,"BlogLeyes/owner.html")
 
-        myForm = OwnerForm(request.POST)
-        print(myForm)
-        if myForm.is_valid:
-            information = myForm.cleaned_data
-            owners = Owner(nombre = information["nombre"], apellido = information["apellido"], shares = information["shares"])
-            owners.save()
-            owners = Owner.objects.filter()
-            return render(request, "BlogLeyes/inicio.html")
-    else:
+class ownerList(ListView):
 
-        myForm = OwnerForm()
+    model = Owner
+    template_name = "BlogLeyes/ownerList.html"
 
-    return render(request, "BlogLeyes/owner.html", {"myForm": myForm})
+class ownerDetail(DetailView):
+
+    model = Owner
+    template_name = "BlogLeyes/ownerDetail.html"
+
+class ownerMake(CreateView):
+
+    model = Owner
+    success_url = "/owner/list"
+    fields = [ 'nombre', 'apellido', 'shares']
+
+class ownerUpdate(UpdateView):
+
+    model = Owner
+    success_url = "/owner/list"
+    fields = [ 'nombre', 'apellido', 'shares']
+
+class ownerDelete(DeleteView):
+
+    model = Owner
+    success_url = "/owner/list"
 
 def donor(request):
     if request.method == "POST":

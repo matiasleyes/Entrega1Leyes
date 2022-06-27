@@ -1,0 +1,12 @@
+{% extends "BlogLeyes/padre.html" %}
+
+{% load static %}
+{% block content %}
+<p>Nombre del Escritor:<i>{{writer.nombre}}</i></p>
+<p>Apellido del Escritor:<i>{{writer.apellido}}</i></p>
+<p>Edad del Escritor:<i>{{writer.edad}}</i></p>
+<p>Especialidad del Escritor:<i>{{writer.especialidad}}</i> </p>
+<p>
+    <a href="{% url 'writerList' %}"> Regresar </a>
+</p>
+{% endblock %}

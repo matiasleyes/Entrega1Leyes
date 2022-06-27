@@ -20,5 +20,5 @@ from BlogLeyes.views import writer, articulo, owner, inicio, themes, topics, don
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('BlogLeyes/', include("BlogLeyes.urls")),
+    path('', include("BlogLeyes.urls")),
 ]
