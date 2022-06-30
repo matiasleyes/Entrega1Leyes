@@ -1,0 +1,13 @@
+
+{% extends "BlogLeyes/padre.html" %}
+
+{% load static %}
+{% block content %}
+<h1>Ingrese un Donante</h1>
+
+<form method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <input type="submit"value="Enviar"/>
+</form>
+{% endblock %}

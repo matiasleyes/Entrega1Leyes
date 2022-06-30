@@ -1,0 +1,24 @@
+
+{% extends "BlogLeyes/padre.html" %}
+
+{% load static %}
+{% block content %}
+<h1>Donantes</h1>
+<ul>
+
+    {% for donor in object_list %}
+
+        <li>
+            <p>Nombre : {{donor.entidad}}</p>
+            <p>
+            <a href="{% url 'donorDetail' donor.id %}"> Ver</a>
+            <a href="{% url 'donorEdit' donor.id %}">Editar</a>
+            <a href="{% url 'donorDelete' donor.id %}">Eliminar</a>
+            </p>
+        </li>
+
+    {% endfor %}
+</ul>
+                            
+<a href="{% url 'donorNew' %}">Anadir un Donante</a>
+{% endblock %}

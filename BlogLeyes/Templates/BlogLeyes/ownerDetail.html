@@ -1,0 +1,11 @@
+{% extends "BlogLeyes/padre.html" %}
+
+{% load static %}
+{% block content %}
+<p>Nombre del Dueno:<i>{{owner.nombre}}</i></p>
+<p>Apellido del Dueno:<i>{{owner.apellido}}</i></p>
+<p>Shares del Dueno:<i>{{owner.shares}}</i></p>
+<p>
+    <a href="{% url 'ownerList' %}"> Regresar </a>
+</p>
+{% endblock %}

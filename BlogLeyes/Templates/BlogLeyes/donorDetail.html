@@ -1,0 +1,10 @@
+{% extends "BlogLeyes/padre.html" %}
+
+{% load static %}
+{% block content %}
+<p>Nombre del Donante:<i>{{donor.entidad}}</i></p>
+
+<p>
+    <a href="{% url 'donorList' %}"> Regresar </a>
+</p>
+{% endblock %}

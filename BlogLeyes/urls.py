@@ -6,34 +6,39 @@ urlpatterns = [
     path('',views.inicio, name='Inicio'),
     path('inicio',views.inicio, name='Inicio'),
 
-    #Login-----------
+    #Login----------------------------------------------------------------------------
     path('login/',views.login_request, name="Login"),
     path('register/', views.register, name='Register'),
     
-    #Writer----------
+    #Writer----------------------------------------------------------------------------
     path('writer/list',views.writerList.as_view(),name='writerList'),
-    path(r'^(?P<pk>\d+)$',views.writerDetail.as_view(),name='writerDetail'),
-    path(r'^nuevo$',views.writerMake.as_view(),name='writerNew'),
-    path(r'^editar/(?P<pk>\d+)$',views.writerUpdate.as_view(),name='writerEdit'),
-    path(r'^borrar/(?P<pk>\d+)$',views.writerDelete.as_view(),name='writerDelete'),
+    path('writer/<pk>',views.writerDetail.as_view(),name='writerDetail'),
+    path('writer/new',views.writerMake.as_view(),name='writerNew'),
+    path('writer/edit/<pk>',views.writerUpdate.as_view(),name='writerEdit'),
+    path('writer/delete/<pk>',views.writerDelete.as_view(),name='writerDelete'),
 
-    #Owner----------
-    path('owner/list',views.ownerList.as_view(),name='ownerList'),
-    path(r'^(?P<pk>\d+)$',views.ownerDetail.as_view(),name='ownerDetail'),
-    path(r'^nuevo$',views.ownerMake.as_view(),name='ownerNew'),
-    path(r'^editar/(?P<pk>\d+)$',views.ownerUpdate.as_view(),name='ownerEdit'),
-    path(r'^borrar/(?P<pk>\d+)$',views.ownerDelete.as_view(),name='ownerDelete'),
+    #Owner----------------------------------------------------------------------------
+    path('owner/list',views.ownerList.as_view(), name='ownerList'),
+    path('owner/<pk>',views.ownerDetail.as_view(),name='ownerDetail'),
+    path('owner/new',views.ownerMake.as_view(),name='ownerNew'),
+    path('owner/edit/<pk>',views.ownerUpdate.as_view(),name='ownerEdit'),
+    path('owner/delete/<pk>',views.ownerDelete.as_view(),name='ownerDelete'),
 
-    #Themes----------
-    path('themes/list',views.themesList.as_view(),name='themesList'),
-    path(r'^(?P<pk>\d+)$',views.themesDetail.as_view(),name='themesDetail'),
-    path(r'^nuevo$',views.themesMake.as_view(),name='themesNew'),
-    path(r'^editar/(?P<pk>\d+)$',views.themesUpdate.as_view(),name='themesEdit'),
-    path(r'^borrar/(?P<pk>\d+)$',views.themesDelete.as_view(),name='themesDelete'),
-
+    #Themes----------------------------------------------------------------------------
+    path('themes/list', views.themesList.as_view(),name='themesList'),
+    path('themes/<pk>', views.themesDetail.as_view(),name='themesDetail'),
+    path('themes/new',views.themesMake.as_view(),name='themesNew'),
+    path('themes/edit/<pk>',views.themesUpdate.as_view(),name='themesEdit'),
+    path('themes/delete/<pk>',views.themesDelete.as_view(),name='themesDelete'),
     
+    #Donor----------------------------------------------------------------------------
+    path('donor/list', views.donorList.as_view(), name='donorList'),
+    path('donor/<pk>', views.donorDetail.as_view(),name='donorDetail'),
+    path('donor/new',views.donorMake.as_view(),name='donorNew'),
+    path('donor/edit/<pk>',views.donorUpdate.as_view(),name='donorEdit'),
+    path('donor/delete/<pk>',views.donorDelete.as_view(),name='donorDelete'),
+
     path('articulo', views.articulo, name='Articulo'),
-    path('donor/', views.donor, name='Donor'),
     path('topics/', views.topics, name='Topics'),
     path('busquedaEscritor/', views.busquedaEscritor, name="BusquedaEscritor"),
     path('buscar/', views.buscar, name='buscar'),

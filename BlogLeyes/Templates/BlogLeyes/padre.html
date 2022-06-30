@@ -28,16 +28,16 @@
                         <a class="nav-link" href="{% url 'Inicio' %}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/themes/list">Temas</a>
+                        <a class="nav-link" href="{% url 'themesList' %}">Temas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'writerList' %}">Escritores</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'Donor' %}">Donantes</a>
+                        <a class="nav-link" href="{% url 'donorList' %}">Donantes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/owner/list">Owners</a>
+                        <a class="nav-link" href="{% url 'ownerList' %}">Owners</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'BusquedaEscritor' %}">Buscar Escritor</a>

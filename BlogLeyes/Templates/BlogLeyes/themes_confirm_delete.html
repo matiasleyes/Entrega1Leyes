@@ -1,0 +1,14 @@
+{% extends "BlogLeyes/padre.html" %}
+{% load static %}
+
+{% block content %}
+<form method="post">{%csrf_token%}
+
+    <p>Desea eliminar a {{themes.tema}} ?</p>
+    
+    <br>
+
+    <input type="submit"value="Submit"/>
+    <button type="button"><a href="{% url 'themesList' %}">Cancelar</a></button>
+</form>
+{% endblock %}

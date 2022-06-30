@@ -1,0 +1,24 @@
+
+{% extends "BlogLeyes/padre.html" %}
+
+{% load static %}
+{% block content %}
+<h1>Owners</h1>
+<ul>
+
+    {% for owner in object_list %}
+
+        <li>
+            <p>Nombre : {{owner.nombre}} {{owner.apellido}}</p>
+            <p>
+            <a href="{% url 'ownerDetail' owner.id %}"> Ver</a>
+            <a href="{% url 'ownerEdit' owner.id %}">Editar</a>
+            <a href="{% url 'ownerDelete' owner.id %}">Eliminar</a>
+            </p>
+        </li>
+
+    {% endfor %}
+</ul>
+                            
+<a href="{% url 'ownerNew' %}">Anadir un Dueno</a>
+{% endblock %}

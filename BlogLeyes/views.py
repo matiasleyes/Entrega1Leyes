@@ -7,6 +7,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 def inicio(request):
 
@@ -78,19 +79,19 @@ class writerDetail(DetailView):
 class writerMake(CreateView):
 
     model = Writer
-    success_url = "/writer/list"
+    success_url = reverse_lazy('writerList')
     fields = [ 'nombre', 'apellido', 'edad','especialidad' ]
 
 class writerUpdate(UpdateView):
 
     model = Writer
-    success_url = "/writer/list"
+    success_url = reverse_lazy('writerList')
     fields = [ 'nombre', 'apellido', 'edad', 'especialidad' ]
 
 class writerDelete(DeleteView):
 
     model = Writer
-    success_url = "/writer/list"
+    success_url = reverse_lazy('writerList')
 
 #THEMES---------------------------------------------------------------------------------
 def themes(request):
@@ -109,19 +110,19 @@ class themesDetail(DetailView):
 class themesMake(CreateView):
 
     model = Themes
-    success_url = "/themes/list"
+    success_url = reverse_lazy('themesList')
     fields = [ 'tema' ]
 
 class themesUpdate(UpdateView):
 
     model = Themes
-    success_url = "/themes/list"
+    success_url = reverse_lazy('themesList')
     fields = [ 'tema' ]
 
 class themesDelete(DeleteView):
 
     model = Themes
-    success_url = "/themes/list"
+    success_url = reverse_lazy('themesList')
 
 
 #TOPICS---------------------------------------------------------------------------------
@@ -145,35 +146,51 @@ class ownerDetail(DetailView):
 class ownerMake(CreateView):
 
     model = Owner
-    success_url = "/owner/list"
+    success_url = reverse_lazy('ownerList')
     fields = [ 'nombre', 'apellido', 'shares']
 
 class ownerUpdate(UpdateView):
 
     model = Owner
-    success_url = "/owner/list"
+    success_url = reverse_lazy('ownerList')
     fields = [ 'nombre', 'apellido', 'shares']
 
 class ownerDelete(DeleteView):
 
     model = Owner
-    success_url = "/owner/list"
+    success_url = reverse_lazy('ownerList')
 
+#Donor ---------------------------------------------------------------------------------
 def donor(request):
-    if request.method == "POST":
+    return render(request,"BlogLeyes/donor.html")
 
-        myForm = DonorForm(request.POST)
-        print(myForm)
-        if myForm.is_valid:
-            information = myForm.cleaned_data
-            donor = Donor(entidad = information["entidad"], donado = information["donado"])
-            donor.save()
-            return render(request, "BlogLeyes/inicio.html")
-    else:
+class donorList(ListView):
 
-        myForm = DonorForm()
+    model = Donor
+    template_name = "BlogLeyes/donorList.html"
 
-    return render(request, "BlogLeyes/donor.html", {"myForm": myForm})
+class donorDetail(DetailView):
+
+    model = Donor
+    template_name = "BlogLeyes/donorDetail.html"
+
+class donorMake(CreateView):
+
+    model = Donor
+    success_url = reverse_lazy('donorList')
+    fields = [ 'entidad', 'donado' ]
+
+class donorUpdate(UpdateView):
+
+    model = Donor
+    success_url = reverse_lazy('donorList')
+    fields = [ 'entidad', 'donado' ]
+
+class donorDelete(DeleteView):
+
+    model = Donor
+    success_url = reverse_lazy('donorList')
+
 
 def articulo(request):
     return render(request, "BlogLeyes/articulo.html")

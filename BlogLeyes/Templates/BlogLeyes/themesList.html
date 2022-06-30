@@ -1,0 +1,24 @@
+
+{% extends "BlogLeyes/padre.html" %}
+
+{% load static %}
+{% block content %}
+<h1>Temas</h1>
+<ul>
+
+    {% for themes in object_list %}
+
+        <li>
+            <p>Nombre : {{themes.tema}}</p>
+            <p>
+            <a href="{% url 'themesDetail' themes.id %}"> Ver</a>
+            <a href="{% url 'themesEdit' themes.id %}">Editar</a>
+            <a href="{% url 'themesDelete' themes.id %}">Eliminar</a>
+            </p>
+        </li>
+
+    {% endfor %}
+</ul>
+                            
+<a href="{% url 'themesNew' %}">Anadir un tema</a>
+{% endblock %}
