@@ -46,7 +46,7 @@ def register(request):
 
         form = UserCreationForm(request.POST)
         
-        if form.is_valid:
+        if form.is_valid():
             
             username = form.cleaned_data['username']
             form.save()
@@ -208,3 +208,5 @@ def buscar(request):
         respuesta = "No se ingresó ningun escritor"
         return HttpResponse(respuesta)
 
+def aboutus(request):
+    return render(request, 'BlogLeyes/Aboutus.html')

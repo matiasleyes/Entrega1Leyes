@@ -42,4 +42,6 @@ urlpatterns = [
     path('topics/', views.topics, name='Topics'),
     path('busquedaEscritor/', views.busquedaEscritor, name="BusquedaEscritor"),
     path('buscar/', views.buscar, name='buscar'),
+    path('aboutus/', views.aboutus, name='Aboutus'),
+
 ]
