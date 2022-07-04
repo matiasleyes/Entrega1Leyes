@@ -4,7 +4,7 @@ from BlogLeyes import views
 urlpatterns = [
 
     path('',views.inicio, name='Inicio'),
-    path('inicio',views.inicio, name='Inicio'),
+    path('inicio/',views.inicio, name='Inicio'),
 
     #Login----------------------------------------------------------------------------
     path('login/',views.login_request, name="Login"),

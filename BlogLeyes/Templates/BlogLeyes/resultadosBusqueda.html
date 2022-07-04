@@ -1,7 +1,7 @@
 {% extends "BlogLeyes/padre.html" %}
 {% load static %}
 
-{% block contenidoQueCambia %}
+{% block content %}
 <h1>Estamos buscando al escritor de apellido {{apellido}}</h1>
 {% if escritor %}
 <ul>
@@ -11,6 +11,9 @@
     <br>
     {% endfor %}
 </ul>
+
+{%else%}
+    <p>no se encontro el escritor</p>
 {% endif %}
 
 {% endblock %}
