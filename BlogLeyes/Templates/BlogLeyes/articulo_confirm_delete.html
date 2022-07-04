@@ -1,0 +1,15 @@
+
+{% extends "BlogLeyes/padre.html" %}
+{% load static %}
+
+{% block content %}
+<form method="post">{%csrf_token%}
+
+    <p>Desea eliminar el articulo {{arituclo.titulo}} ?</p>
+    
+    <br>
+
+    <input type="submit"value="Submit"/>
+    <button type="button"><a href="{% url 'articuloList' %}">Cancelar</a></button>
+</form>
+{% endblock %}

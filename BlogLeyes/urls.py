@@ -38,7 +38,14 @@ urlpatterns = [
     path('donor/edit/<pk>',views.donorUpdate.as_view(),name='donorEdit'),
     path('donor/delete/<pk>',views.donorDelete.as_view(),name='donorDelete'),
 
-    path('articulo', views.articulo, name='Articulo'),
+    #Articulo----------------------------------------------------------------------------
+    path('articulo/list',views.articuloList.as_view(),name='articuloList'),
+    path('articulo/<pk>',views.articuloDetail.as_view(),name='articuloDetail'),
+    path('articulo/articuloNew/',views.articuloMake.as_view(),name='articuloNew'),
+    path('articulo/edit/<pk>',views.articuloUpdate.as_view(),name='articuloEdit'),
+    path('articulo/delete/<pk>',views.articuloDelete.as_view(),name='articuloDelete'),
+
+    path('articulo/', views.articulo, name='articulo'),
     path('topics/', views.topics, name='Topics'),
     path('busquedaEscritor/', views.busquedaEscritor, name="BusquedaEscritor"),
     path('buscar/', views.buscar, name='buscar'),

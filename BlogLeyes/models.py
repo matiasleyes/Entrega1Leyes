@@ -37,7 +37,9 @@ class Donor(models.Model):
     def __str__(self):
         return self.entidad
 
-class articulo(models.Model):
+class Articulo(models.Model):
     titulo = models.CharField(max_length=100)
     cuerpo = models.CharField(max_length=1000)
-    writer = models.ForeignKey(Writer, null=True, on_delete=models.CASCADE)
+    writer = models.CharField(max_length=40)
+    def __str__(self):
+        return self.titulo, self.cuerpo, self.writer

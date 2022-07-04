@@ -191,9 +191,37 @@ class donorDelete(DeleteView):
     model = Donor
     success_url = reverse_lazy('donorList')
 
-
+#Articulo---------------------------------------------------------------------------------
 def articulo(request):
     return render(request, "BlogLeyes/articulo.html")
+
+class articuloList(ListView):
+
+    model = Articulo
+    template_name = "BlogLeyes/articuloList.html"
+
+class articuloDetail(DetailView):
+
+    model = Articulo
+    template_name = "BlogLeyes/articuloDetail.html"
+
+class articuloMake(CreateView):
+
+    model = Articulo
+    success_url = reverse_lazy('articuloList')
+    fields = [ 'titulo', 'cuerpo', 'writer' ]
+
+class articuloUpdate(UpdateView):
+
+    model = Articulo
+    success_url = reverse_lazy('articuloList')
+    fields = [ 'titulo', 'cuerpo', 'writer' ]
+
+class articuloDelete(DeleteView):
+
+    model = Articulo
+    success_url = reverse_lazy('articuloList')
+
 
 def busquedaEscritor(request):
     return render(request, 'BlogLeyes/busquedaEscritor.html')

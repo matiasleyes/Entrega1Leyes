@@ -1,0 +1,11 @@
+{% extends "BlogLeyes/padre.html" %}
+
+{% load static %}
+{% block content %}
+<p>Nombre del Articulo:<i>{{articulo.titulo}}</i></p>
+<p><i>{{articulo.cuerpo}}</i></p>
+<p><i>{{articulo.writer}}</i></p>
+<p>
+    <a href="{% url 'articuloList' %}"> Regresar </a>
+</p>
+{% endblock %}
