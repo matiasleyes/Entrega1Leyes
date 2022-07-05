@@ -42,7 +42,7 @@ def login_request(request):
 
     return render(request, "BlogLeyes/login.html", {'form':form}) 
 
-
+#REGISTER-------------------------------------------------------------------------------------------------------
 def register(request):
 
     if request.method == "POST":
@@ -64,7 +64,7 @@ def register(request):
 
         return render(request, "BlogLeyes/register.html", {"form":form})
 
-# User  edition ---------------------------
+#USER EDITION -------------------------------------------------------------------------------------------
 @login_required
 def editarPerfil(request):
     usuario = request.user
@@ -97,19 +97,19 @@ class writerDetail(DetailView):
     model = Writer
     template_name = "BlogLeyes/writerDetail.html"
 
-class writerMake(CreateView):
+class writerMake(LoginRequiredMixin,CreateView):
 
     model = Writer
     success_url = reverse_lazy('writerList')
     fields = [ 'nombre', 'apellido', 'edad','especialidad' ]
 
-class writerUpdate(UpdateView):
+class writerUpdate(LoginRequiredMixin,UpdateView):
 
     model = Writer
     success_url = reverse_lazy('writerList')
     fields = [ 'nombre', 'apellido', 'edad', 'especialidad' ]
 
-class writerDelete(DeleteView):
+class writerDelete(LoginRequiredMixin,DeleteView):
 
     model = Writer
     success_url = reverse_lazy('writerList')
@@ -128,27 +128,22 @@ class themesDetail(DetailView):
     model = Themes
     template_name = "BlogLeyes/themesDetail.html"
 
-class themesMake(CreateView):
+class themesMake(LoginRequiredMixin,CreateView):
 
     model = Themes
     success_url = reverse_lazy('themesList')
     fields = [ 'tema' ]
 
-class themesUpdate(UpdateView):
+class themesUpdate(LoginRequiredMixin,UpdateView):
 
     model = Themes
     success_url = reverse_lazy('themesList')
     fields = [ 'tema' ]
 
-class themesDelete(DeleteView):
+class themesDelete(LoginRequiredMixin,DeleteView):
 
     model = Themes
     success_url = reverse_lazy('themesList')
-
-
-#TOPICS---------------------------------------------------------------------------------
-def topics(request):
-    return render(request,"BlogLeyes/topics.html")
 
 #OWNER ---------------------------------------------------------------------------------
 def owner(request):
@@ -164,19 +159,19 @@ class ownerDetail(DetailView):
     model = Owner
     template_name = "BlogLeyes/ownerDetail.html"
 
-class ownerMake(CreateView):
+class ownerMake(LoginRequiredMixin,CreateView):
 
     model = Owner
     success_url = reverse_lazy('ownerList')
     fields = [ 'nombre', 'apellido', 'shares']
 
-class ownerUpdate(UpdateView):
+class ownerUpdate(LoginRequiredMixin,UpdateView):
 
     model = Owner
     success_url = reverse_lazy('ownerList')
     fields = [ 'nombre', 'apellido', 'shares']
 
-class ownerDelete(DeleteView):
+class ownerDelete(LoginRequiredMixin,DeleteView):
 
     model = Owner
     success_url = reverse_lazy('ownerList')
@@ -195,19 +190,19 @@ class donorDetail(DetailView):
     model = Donor
     template_name = "BlogLeyes/donorDetail.html"
 
-class donorMake(CreateView):
+class donorMake(LoginRequiredMixin,CreateView):
 
     model = Donor
     success_url = reverse_lazy('donorList')
     fields = [ 'entidad', 'donado' ]
 
-class donorUpdate(UpdateView):
+class donorUpdate(LoginRequiredMixin,UpdateView):
 
     model = Donor
     success_url = reverse_lazy('donorList')
     fields = [ 'entidad', 'donado' ]
 
-class donorDelete(DeleteView):
+class donorDelete(LoginRequiredMixin,DeleteView):
 
     model = Donor
     success_url = reverse_lazy('donorList')
@@ -226,27 +221,26 @@ class articuloDetail(DetailView):
     model = Articulo
     template_name = "BlogLeyes/articuloDetail.html"
 
-class articuloMake(CreateView):
+class articuloMake(LoginRequiredMixin,CreateView):
 
     model = Articulo
     success_url = reverse_lazy('articuloList')
     fields = [ 'titulo', 'cuerpo', 'writer' ]
 
-class articuloUpdate(UpdateView):
+class articuloUpdate(LoginRequiredMixin,UpdateView):
 
     model = Articulo
     success_url = reverse_lazy('articuloList')
     fields = [ 'titulo', 'cuerpo', 'writer' ]
 
-class articuloDelete(DeleteView):
+class articuloDelete(LoginRequiredMixin,DeleteView):
 
     model = Articulo
     success_url = reverse_lazy('articuloList')
 
-
+#BUSQUEDA------------------------------------------------------------------------------
 def busquedaEscritor(request):
     return render(request, 'BlogLeyes/busquedaEscritor.html')
-
 
 def buscar(request):
     if request.GET['apellido']:
@@ -257,5 +251,6 @@ def buscar(request):
         respuesta = "No se ingresó ningun escritor"
         return HttpResponse(respuesta)
 
+#ABOUT US----------------------------------------------------------------------------
 def aboutus(request):
     return render(request, 'BlogLeyes/Aboutus.html')

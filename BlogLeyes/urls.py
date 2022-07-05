@@ -47,10 +47,11 @@ urlpatterns = [
     path('articulo/edit/<pk>',views.articuloUpdate.as_view(),name='articuloEdit'),
     path('articulo/delete/<pk>',views.articuloDelete.as_view(),name='articuloDelete'),
 
-    path('articulo/', views.articulo, name='articulo'),
-    path('topics/', views.topics, name='Topics'),
+    #BUSQUEDA------------------------------------------------------------------------------
     path('busquedaEscritor/', views.busquedaEscritor, name="BusquedaEscritor"),
     path('buscar/', views.buscar, name='buscar'),
+
+    #ABOUT US----------------------------------------------------------------------------
     path('aboutus/', views.aboutus, name='Aboutus'),
 
 ]
