@@ -76,6 +76,7 @@ def editarPerfil(request):
             usuario.email = informacion['email']
             usuario.password1 = informacion['password1']
             usuario.password2 = informacion['password2']
+            
             usuario.save()
 
             return render(request, 'BlogLeyes/inicio.html', {'usuario': usuario, 'mensaje': 'Usuario actualizado correctamente'})

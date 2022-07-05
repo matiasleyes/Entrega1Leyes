@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from BlogLeyes.views import writer, articulo, owner, inicio, themes, topics, donor
+from BlogLeyes.views import writer, articulo, owner, inicio, themes,  donor
 
 
 urlpatterns = [
