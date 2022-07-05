@@ -1,16 +1,19 @@
 from django.shortcuts import render
 from .models import *
 from django.http import HttpResponse 
-from .forms import WriterForm, ThemesForm, OwnerForm, DonorForm
+from BlogLeyes.forms import UserRegisterForm
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from .forms import UserEditForm
 from django.urls import reverse_lazy
 
 def inicio(request):
-
     return render(request, "BlogLeyes/inicio.html")
 
 #LOGIN-----------------------------------------------------------------------------------------------------------------------------------
@@ -44,7 +47,7 @@ def register(request):
 
     if request.method == "POST":
 
-        form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
         
         if form.is_valid():
             
@@ -54,13 +57,31 @@ def register(request):
             return render(request, "BlogLeyes/inicio.html", {'mensaje':f'usuario {username} creado'})
     
         else:
-            return render(request, "BlogLeyes/inicio.html", {'mensaje':f'no se pudo crea el usuario {username}'})
+            return render(request, "BlogLeyes/inicio.html", {'mensaje':f'no se pudo crea el usuario'})
 
     else:
-        form = UserCreationForm()
+        form = UserRegisterForm()
 
         return render(request, "BlogLeyes/register.html", {"form":form})
 
+# User  edition ---------------------------
+@login_required
+def editarPerfil(request):
+    usuario = request.user
+
+    if request.method == 'POST':
+        formulario = UserEditForm(request.POST, instance=usuario)
+        if formulario.is_valid():
+            informacion = formulario.cleaned_data
+            usuario.email = informacion['email']
+            usuario.password1 = informacion['password1']
+            usuario.password2 = informacion['password2']
+            usuario.save()
+
+            return render(request, 'BlogLeyes/inicio.html', {'usuario': usuario, 'mensaje': 'Usuario actualizado correctamente'})
+    else:
+        formulario = UserEditForm(instance=usuario)
+        return render(request, 'BlogLeyes/editarPerfil.html', {'formulario': formulario, 'usuario': usuario.username})
 
 #WRITER---------------------------------------------------------------------------------
 def writer(request):

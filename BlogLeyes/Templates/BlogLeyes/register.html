@@ -6,9 +6,7 @@
 
 <h1 class="mb-5"> Cree su usuario</h1>
                             
-<form action="" method="POST">
-
-    {%csrf_token%}
+<form method="POST">{%csrf_token%}
 
     {{form.as_p}}
 
@@ -16,10 +14,4 @@
     
 </form>
                        
-{% endblock %}
-
-{% block cuadro %}
-
-
-
 {% endblock %}

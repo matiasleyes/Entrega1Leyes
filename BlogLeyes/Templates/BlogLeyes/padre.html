@@ -40,18 +40,31 @@
                         <a class="nav-link" href="{% url 'ownerList' %}">Owners</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'BusquedaEscritor' %}">Buscar Escritor</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'articuloList' %}">Articulos</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'BusquedaEscritor' %}">Buscar Escritor</a>
+                    </li>
+                    
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'Aboutus' %}">About Us</a>
                     </li>
+                    {% if not request.user.is_authenticated %}
+
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'Login' %}">Sing Up</a>
+                        <a class="nav-link" href="{% url 'Login' %}">Sing In</a>
+                    </li>
+                    {% endif %}
+                    {% if request.user.is_authenticated %}
+
+                    <a class="nav-link" href="{% url 'editarPerfil' %}">Hola {{user.username}}</a>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'Logout' %}">Logout</a>
                     </li>
 
+
+                    {% endif %}
 
                 </ul>
             </div>
