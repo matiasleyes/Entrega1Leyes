@@ -1,8 +1,6 @@
 from django.urls import path
 from BlogLeyes import views
 from django.contrib.auth.views import LogoutView
-from django.conf import settings
-from django.conf.urls.static import static
 
 urlpatterns = [
 
@@ -14,6 +12,7 @@ urlpatterns = [
     path('register/', views.register, name='Register'),
     path('logout', LogoutView.as_view(template_name='BlogLeyes/logout.html'), name = "Logout"),
     path('editarPerfil', views.editarPerfil, name = "editarPerfil"),
+    
     #Writer----------------------------------------------------------------------------
     path('writer/list',views.writerList.as_view(),name='writerList'),
     path('writer/<pk>',views.writerDetail.as_view(),name='writerDetail'),
@@ -58,5 +57,4 @@ urlpatterns = [
 
 ]
 
-urlpatterns +=     static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

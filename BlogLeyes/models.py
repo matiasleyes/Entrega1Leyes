@@ -44,7 +44,3 @@ class Articulo(models.Model):
     writer = models.CharField(max_length=40)
     def __str__(self):
         return self.titulo, self.cuerpo, self.writer
-
-class Avatar(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    avatar = models.ImageField(upload_to='avatars', blank=True, null=True)

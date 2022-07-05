@@ -14,6 +14,7 @@ from .forms import UserEditForm
 from django.urls import reverse_lazy
 
 def inicio(request):
+
     return render(request, "BlogLeyes/inicio.html")
 
 #LOGIN-----------------------------------------------------------------------------------------------------------------------------------

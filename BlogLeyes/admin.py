@@ -7,4 +7,4 @@ admin.site.register(Owner)
 admin.site.register(Donor)
 admin.site.register(Themes)
 admin.site.register(Topics)
-admin.site.register(Avatar)
+
