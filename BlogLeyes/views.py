@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from .models import *
 from django.http import HttpResponse 
-from .forms import WriterForm, ThemesForm, OwnerForm, DonorForm
+from .forms import WriterForm, ThemesForm, OwnerForm, DonorForm, UserEditForm
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 def inicio(request):
 
@@ -149,3 +151,25 @@ def buscar(request):
 
 def aboutus(request):
     return render(request, 'BlogLeyes/Aboutus.html')
+
+
+# User  edition ---------------------------
+
+
+@login_required
+def editarPerfil(request):
+    usuario = request.user
+
+    if request.method == 'POST':
+        formulario = UserEditForm(request.POST, instance=usuario)
+        if formulario.is_valid():
+            informacion = formulario.cleaned_data
+            usuario.email = informacion['email']
+            usuario.password1 = informacion['password1']
+            usuario.password2 = informacion['password2']
+            usuario.save()
+
+            return render(request, 'BlogLeyes/inicio.html', {'usuario': usuario, 'mensaje': 'Usuario actualizado correctamente'})
+    else:
+        formulario = UserEditForm(instance=usuario)
+        return render(request, 'BlogLeyes/editarPerfil.html', {'formulario': formulario, 'usuario': usuario.username})

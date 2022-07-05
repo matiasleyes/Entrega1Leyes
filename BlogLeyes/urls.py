@@ -1,5 +1,8 @@
 from django.urls import path
 from BlogLeyes import views
+from BlogLeyes.views import login_request, editarPerfil
+from django.contrib.auth.views import LogoutView
+
 
 urlpatterns = [
     #Login-----------
@@ -18,5 +21,9 @@ urlpatterns = [
     path('busquedaEscritor/', views.busquedaEscritor, name="BusquedaEscritor"),
     path('buscar/', views.buscar, name='buscar'),
     path('aboutus/', views.aboutus, name='Aboutus'),
+    path('login', login_request, name = "Login"),
+    path('logout', LogoutView.as_view(template_name='BlogLeyes/logout.html'), name = "Logout"),
+
+    path('editarPerfil', editarPerfil, name = "editarPerfil"),
 
 ]
