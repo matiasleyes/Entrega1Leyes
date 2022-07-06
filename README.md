@@ -1,9 +1,22 @@
 # Proyecto Blog Leyes
 
-Esta es la primera entrega para el proyecto final de Coderhouse.  El objetivo es hacer un blog donde cada escritor pueda aportar a la comunidad y escribir sobre diversos temas.  Para esta primera entrega , se encuentran listos los formularios para cargar instnacias a las siguientes clases:
+Bienvenidos al BlogLeyes!  El trabajo final del curso de Python de CoderHouse.
 
-- Temas. subtemas, escritores, donantes, owners y articulos.
+Alumnos: Mateo De Martino y Matias Leyes
 
-Tambien se encuentra la funcionalidad de la busqueda de escritores.  
+Contribuciones de Matias Leyes: Creacion de las diferentes clases, modelos y html padre con bootstrap.  Configuracion Login, Logout y modificacion del perfil de los usuarios.
+Contribuciones de Mateo De Martino: Configuracion del CRUD de todas las clases y modelos y armado de autentificaciòn.
 
-Por favor, ver el trabajo en la rama1.
+
+Video explicativo de las funcionalidades de la pàgina:
+
+
+https://drive.google.com/file/d/1fwraV23XHWPldxWD7GL0tozg5Ox5kdHK/view?usp=sharing
+
+
+Muchas gracias!
+
+
+
+
+
